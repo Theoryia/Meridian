@@ -11,6 +11,7 @@
   let aircraftTypeFilter = $state('');
   let minDistance = $state(0);
   let maxDistance = $state(10000);
+  let includeCodeshares = $state(true);
   let shareMessage = $state('');
   let showShareMessage = $state(false);
   
@@ -31,6 +32,7 @@
     aircraftTypeFilter = '';
     minDistance = 0;
     maxDistance = 10000;
+    includeCodeshares = true;
   }
   
   // Share current filters
@@ -44,6 +46,7 @@
       if (aircraftTypeFilter) params.set('aircraft', aircraftTypeFilter);
       if (minDistance > 0) params.set('minDist', minDistance.toString());
       if (maxDistance < 15000) params.set('maxDist', maxDistance.toString());
+      params.set('codeshares', includeCodeshares.toString());
       
       // Generate the shareable URL
       const shareableUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
@@ -79,6 +82,7 @@
     if (params.has('aircraft')) aircraftTypeFilter = params.get('aircraft') || '';
     if (params.has('minDist')) minDistance = parseInt(params.get('minDist') || '0');
     if (params.has('maxDist')) maxDistance = parseInt(params.get('maxDist') || '10000');
+    if (params.has('codeshares')) includeCodeshares = params.get('codeshares') === 'true';
   });
   
   // This will be replaced with actual data from your API
@@ -176,35 +180,47 @@
               />
             </div>
           </div>
+
+          <!-- Codeshare Toggle -->
+          <div class="w-full mt-3">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs text-slate-400">Include Codeshare Flights</label>
+              <div class="relative inline-block w-12 align-middle select-none">
+                <input 
+                  type="checkbox" 
+                  id="codeshare-toggle" 
+                  bind:checked={includeCodeshares}
+                  class="sr-only"
+                />
+                <label 
+                  for="codeshare-toggle" 
+                  class="block overflow-hidden h-6 rounded-full bg-slate-700 cursor-pointer transition-colors duration-200"
+                >
+                  <span 
+                    class="dot block h-6 w-6 rounded-full bg-white shadow transform transition-transform duration-200 ease-in-out"
+                    class:translate-x-6={includeCodeshares} 
+                  ></span>
+                </label>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 mt-1">
+              {includeCodeshares ? 'Showing both operating and codeshare flights' : 'Showing only operating flights'}
+            </p>
+          </div>
           
           <!-- Filter Actions -->
-          <div class="w-full flex justify-between gap-3 mt-3">
-            <!-- Left side: Share button -->
+          <div class="w-full flex justify-end gap-3 mt-3">
             <button 
-              on:click={shareFilters}
-              class="px-4 py-2 text-sm bg-indigo-600 hover:bg-indigo-500 text-white rounded transition-colors flex items-center gap-2"
-              title="Share current filters"
+              on:click={resetFilters}
+              class="px-4 py-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-200 rounded transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-              </svg>
-              Share
+              Reset Filters
             </button>
-            
-            <!-- Right side: Reset and Apply buttons -->
-            <div class="flex gap-3">
-              <button 
-                on:click={resetFilters}
-                class="px-4 py-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-200 rounded transition-colors"
-              >
-                Reset Filters
-              </button>
-              <button 
-                class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded transition-colors"
-              >
-                Apply Filters
-              </button>
-            </div>
+            <button 
+              class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded transition-colors"
+            >
+              Apply Filters
+            </button>
           </div>
         </div>
       </div>
@@ -273,5 +289,34 @@
 
   .animate-fadeIn {
     animation: fadeIn 0.3s ease-out forwards, fadeOut 0.3s ease-in forwards 2.7s;
+  }
+
+  /* Toggle button styling */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .dot {
+    background-color: white;
+  }
+
+  input:checked + label {
+    background-color: #4f46e5;
+  }
+
+  input:focus + label {
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.5);
+  }
+
+  .translate-x-6 {
+    transform: translateX(1.5rem);
   }
 </style>
