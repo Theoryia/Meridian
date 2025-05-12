@@ -88,19 +88,28 @@
         <div class="flex items-center mb-4">
           <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
           <h3 class="text-xl font-semibold group-hover:text-blue-400 transition-colors">Long Haul Sync</h3>
         </div>
+        <p class="text-slate-400 group-hover:text-slate-300">Calculate time zones and flight times for long-haul trips.</p>
       </a>
       
-      <!-- Feature placeholder 1 -->
-      <div class="bg-slate-800/20 rounded-xl p-6 flex items-center justify-center">
-        <span class="text-slate-500">More features coming soon</span>
-      </div>
+      <!-- NEW Feature: Route-Match -->
+      <a href="/route-match" class="bg-slate-800/40 rounded-xl p-6 hover:bg-slate-800/80 transition-all group">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center mr-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold group-hover:text-green-400 transition-colors">Route Match</h3>
+        </div>
+        <p class="text-slate-400 group-hover:text-slate-300">Find suitable routes based on your aircraft type and specifications.</p>
+      </a>
       
-      <!-- Feature placeholder 2 -->
+      <!-- Feature placeholder -->
       <div class="bg-slate-800/20 rounded-xl p-6 flex items-center justify-center">
         <span class="text-slate-500">More features coming soon</span>
       </div>
