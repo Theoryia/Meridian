@@ -13,8 +13,8 @@ node_modules
 .eslintrc.cjs
 
 .prettierrc
-.pretieriignore
+.prettierignore
 
 README.md
 
-Dockerfile
+dockerfile
