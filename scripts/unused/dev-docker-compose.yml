@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  meridian:
+    container_name: meridian
+    image: node:18-alpine
+    env_file:
+      - .env
+    working_dir: /home/node/app
+    command: sh ./scripts/docker-dev-entrypoint.sh
+    ports:
+      - "5173:5173"   # Vite's default dev port
+    depends_on:
+      - postgres
+    networks:
+      - internal
+    volumes:
+      - ./scripts:/home/node/app/scripts
+      - ./src:/home/node/app/src
+      - ./static:/home/node/app/static
+      - ./package.json:/home/node/app/package.json
+      - ./tsconfig.json:/home/node/app/tsconfig.json
+      - ./svelte.config.js:/home/node/app/svelte.config.js
+      - ./vite.config.ts:/home/node/app/vite.config.ts
+    restart: unless-stopped
+
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"   # PostgreSQL default port (Only Exposed for dev)
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASS}
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+    networks:
+      - internal
+    restart: unless-stopped
+
+volumes:
+  pgdata-dev:
+
+networks:
+  internal:
+    driver: bridge
