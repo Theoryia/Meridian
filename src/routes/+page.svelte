@@ -43,6 +43,8 @@
   
   <!-- Mobile Sidebar -->
   <div class="md:hidden">
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div 
       class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-40 transition-opacity duration-300 ease-in-out {sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}"
       on:click={toggleSidebar}
@@ -53,7 +55,7 @@
       <div class="p-5">
         <div class="flex justify-between items-center mb-6">
           <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">Meridian</span>
-          <button on:click={toggleSidebar} class="text-slate-400 hover:text-white">
+          <button on:click={toggleSidebar} class="text-slate-400 hover:text-white" aria-label="Toggle sidebar">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>

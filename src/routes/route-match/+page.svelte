@@ -114,8 +114,9 @@
           <!-- Filter Controls -->
           <div class="grid grid-cols-1 md:grid-cols-4 gap-3 w-full">
             <div>
-              <label class="block text-xs text-slate-400 mb-1">Airline</label>
-              <input 
+              <label for="airline-filter" class="block text-xs text-slate-400 mb-1">Airline</label>
+              <input
+                id="airline-filter"
                 type="text" 
                 bind:value={airlineFilter}
                 placeholder="Any airline" 
@@ -123,8 +124,9 @@
               />
             </div>
             <div>
-              <label class="block text-xs text-slate-400 mb-1">Departure (ICAO)</label>
+              <label for="departure-filter" class="block text-xs text-slate-400 mb-1">Departure (ICAO)</label>
               <input 
+                id="departure-filter"
                 type="text" 
                 bind:value={departureFilter}
                 placeholder="Any departure" 
@@ -132,8 +134,9 @@
               />
             </div>
             <div>
-              <label class="block text-xs text-slate-400 mb-1">Arrival (ICAO)</label>
-              <input 
+              <label for="arrival-filter" class="block text-xs text-slate-400 mb-1">Arrival (ICAO)</label>
+              <input
+                id="arrival-filter"
                 type="text" 
                 bind:value={arrivalFilter}
                 placeholder="Any arrival" 
@@ -141,8 +144,9 @@
               />
             </div>
             <div>
-              <label class="block text-xs text-slate-400 mb-1">Aircraft Type</label>
+              <label for="aircraft-type-filter" class="block text-xs text-slate-400 mb-1">Aircraft Type</label>
               <select 
+                id="aircraft-type-filter"
                 bind:value={aircraftTypeFilter}
                 class="w-full px-3 py-1.5 bg-slate-700 border border-slate-600 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
@@ -156,13 +160,14 @@
           <!-- Distance Range -->
           <div class="w-full mt-2">
             <div class="flex justify-between mb-1">
-              <label class="text-xs text-slate-400">Distance Range (km)</label>
+              <label for="min-distance-filter" class="text-xs text-slate-400">Distance Range (km)</label>
               <div class="text-xs text-slate-300">
                 {minDistance} - {maxDistance} km
               </div>
             </div>
             <div class="flex gap-3 items-center">
               <input 
+                id="min-distance-filter"
                 type="range" 
                 bind:value={minDistance}
                 min="0" 
@@ -171,6 +176,7 @@
                 class="w-1/2 accent-blue-500" 
               />
               <input 
+                id="max-distance-filter"
                 type="range" 
                 bind:value={maxDistance}
                 min={minDistance} 
@@ -184,7 +190,7 @@
           <!-- Codeshare Toggle -->
           <div class="w-full mt-3">
             <div class="flex items-center justify-between">
-              <label class="block text-xs text-slate-400">Include Codeshare Flights</label>
+              <label for="codeshare-toggle" class="block text-xs text-slate-400">Include Codeshare Flights</label>
               <div class="relative inline-block w-12 align-middle select-none">
                 <input 
                   type="checkbox" 
@@ -210,8 +216,8 @@
           
           <!-- Filter Actions -->
           <div class="w-full flex justify-end gap-3 mt-3">
-            <button 
-              on:click={resetFilters}
+            <button
+              onclick="{resetFilters}"
               class="px-4 py-2 text-sm bg-slate-700 hover:bg-slate-600 text-slate-200 rounded transition-colors"
             >
               Reset Filters
