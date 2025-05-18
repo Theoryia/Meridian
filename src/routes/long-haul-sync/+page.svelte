@@ -358,11 +358,12 @@
             
             <!-- Time Inputs Row -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-slate-300">
+              <label for="departure-date" class="block text-sm font-medium text-slate-300">
                 Departure Time
               </label>
               <div class="grid grid-cols-2 gap-2">
                 <input 
+                  id="departure-date"
                   type="date" 
                   bind:value={departureDateStr}
                   on:change={updateDepartureDateTime}
