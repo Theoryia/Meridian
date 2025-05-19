@@ -1,17 +1,17 @@
-# sv
+# Meridian
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Dockerised, all in one Pre-Flight decision app.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+## Cloning the Repo
 
 ```bash
-# create a new project in the current directory
-npx sv create
+git clone https://github.com/Theoryia/Meridian
+cd Meridian
 
-# create a new project in my-app
-npx sv create my-app
+git submodule init
+git submodule update --recursive --remote
+
+pnpm install
 ```
 
 ## Developing
@@ -19,18 +19,28 @@ npx sv create my-app
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-npm run dev
+git submodule update --recursive --remote
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Database / Dev Dependencies
+docker-compose -f dev-docker-compose.yml up -d
+
+# Meririan
+pnpm run dev
+
 ```
 
-## Building
+## Runnning
+
+```bash
+git submodule update --recursive --remote
+docker compose up -d
+```
 
 To create a production version of your app:
 
 ```bash
 npm run build
+
 ```
 
 You can preview the production build with `npm run preview`.
