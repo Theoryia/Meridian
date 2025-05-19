@@ -25558,7 +25558,7 @@ WHERE NOT EXISTS (
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KIAD')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
