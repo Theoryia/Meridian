@@ -14,7 +14,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASS}
     volumes:
       - pgdata-dev:/var/lib/postgresql/data
-      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+      - ./scripts/init_db.sql:/docker-entrypoint-initdb.d/1-init_db.sql:ro
+      - ./scripts/core_migration.sql:/docker-entrypoint-initdb.d/2-core_migrations.sql:ro
+      - ./scripts/airline_alliances.sql:/docker-entrypoint-initdb.d/3-airline_alliances.sql:ro
     networks:
       - internal
     restart: unless-stopped
