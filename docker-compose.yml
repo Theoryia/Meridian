@@ -12,6 +12,7 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
+      - flighttime
     networks:
       - internal
     restart: unless-stopped

@@ -25590,26 +25590,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VAAH')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VAAH
+-- AirlineRoute for Singapore Airlines on WSSS -> VAAH
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VAAH'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VAAH'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VAAH
+-- Aircraft A359 for Singapore Airlines on WSSS -> VAAH
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VAAH'))),
@@ -25617,13 +25617,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VAAH')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25655,26 +25655,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EHAM')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EHAM
+-- AirlineRoute for Singapore Airlines on WSSS -> EHAM
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EHAM'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EHAM'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EHAM
+-- Aircraft A359 for Singapore Airlines on WSSS -> EHAM
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EHAM'))),
@@ -25682,13 +25682,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EHAM')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25720,26 +25720,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZAA')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> NZAA
+-- AirlineRoute for Singapore Airlines on WSSS -> NZAA
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZAA'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZAA'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> NZAA
+-- Aircraft A359 for Singapore Airlines on WSSS -> NZAA
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZAA'))),
@@ -25747,13 +25747,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZAA')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25785,26 +25785,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VTBS')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VTBS
+-- AirlineRoute for Singapore Airlines on WSSS -> VTBS
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VTBS'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VTBS'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VTBS
+-- Aircraft A359 for Singapore Airlines on WSSS -> VTBS
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VTBS'))),
@@ -25812,13 +25812,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VTBS')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25850,26 +25850,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LEBL')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> LEBL
+-- AirlineRoute for Singapore Airlines on WSSS -> LEBL
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LEBL'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LEBL'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> LEBL
+-- Aircraft A359 for Singapore Airlines on WSSS -> LEBL
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LEBL'))),
@@ -25877,13 +25877,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LEBL')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25915,26 +25915,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZBAA')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> ZBAA
+-- AirlineRoute for Singapore Airlines on WSSS -> ZBAA
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZBAA'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZBAA'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> ZBAA
+-- Aircraft A359 for Singapore Airlines on WSSS -> ZBAA
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZBAA'))),
@@ -25942,13 +25942,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZBAA')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -25980,26 +25980,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOBL')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VOBL
+-- AirlineRoute for Singapore Airlines on WSSS -> VOBL
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOBL'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOBL'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VOBL
+-- Aircraft A359 for Singapore Airlines on WSSS -> VOBL
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOBL'))),
@@ -26007,13 +26007,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOBL')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26045,26 +26045,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBBN')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> YBBN
+-- AirlineRoute for Singapore Airlines on WSSS -> YBBN
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBBN'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBBN'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> YBBN
+-- Aircraft A359 for Singapore Airlines on WSSS -> YBBN
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBBN'))),
@@ -26072,13 +26072,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBBN')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26110,26 +26110,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EBBR')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EBBR
+-- AirlineRoute for Singapore Airlines on WSSS -> EBBR
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EBBR'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EBBR'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EBBR
+-- Aircraft A359 for Singapore Airlines on WSSS -> EBBR
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EBBR'))),
@@ -26137,13 +26137,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EBBR')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26175,26 +26175,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBCS')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> YBCS
+-- AirlineRoute for Singapore Airlines on WSSS -> YBCS
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBCS'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBCS'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> YBCS
+-- Aircraft A359 for Singapore Airlines on WSSS -> YBCS
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBCS'))),
@@ -26202,13 +26202,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YBCS')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26240,26 +26240,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZUTF')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> ZUTF
+-- AirlineRoute for Singapore Airlines on WSSS -> ZUTF
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZUTF'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZUTF'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> ZUTF
+-- Aircraft A359 for Singapore Airlines on WSSS -> ZUTF
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZUTF'))),
@@ -26267,13 +26267,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZUTF')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26305,26 +26305,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOMM')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VOMM
+-- AirlineRoute for Singapore Airlines on WSSS -> VOMM
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOMM'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOMM'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VOMM
+-- Aircraft A359 for Singapore Airlines on WSSS -> VOMM
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOMM'))),
@@ -26332,13 +26332,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOMM')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26370,26 +26370,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZCH')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> NZCH
+-- AirlineRoute for Singapore Airlines on WSSS -> NZCH
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZCH'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZCH'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> NZCH
+-- Aircraft A359 for Singapore Airlines on WSSS -> NZCH
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZCH'))),
@@ -26397,13 +26397,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'NZCH')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26435,26 +26435,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EKCH')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EKCH
+-- AirlineRoute for Singapore Airlines on WSSS -> EKCH
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EKCH'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EKCH'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EKCH
+-- Aircraft A359 for Singapore Airlines on WSSS -> EKCH
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EKCH'))),
@@ -26462,13 +26462,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EKCH')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26500,26 +26500,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VIDP')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VIDP
+-- AirlineRoute for Singapore Airlines on WSSS -> VIDP
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VIDP'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VIDP'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> VIDP
+-- Aircraft A388 for Singapore Airlines on WSSS -> VIDP
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VIDP'))),
@@ -26527,13 +26527,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VIDP')))
     AND aircraft_type = 'A388'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26565,26 +26565,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDF')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EDDF
+-- AirlineRoute for Singapore Airlines on WSSS -> EDDF
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDF'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDF'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> EDDF
+-- Aircraft A388 for Singapore Airlines on WSSS -> EDDF
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDF'))),
@@ -26592,13 +26592,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDF')))
     AND aircraft_type = 'A388'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26630,26 +26630,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVNB')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VVNB
+-- AirlineRoute for Singapore Airlines on WSSS -> VVNB
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVNB'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVNB'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VVNB
+-- Aircraft A359 for Singapore Airlines on WSSS -> VVNB
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVNB'))),
@@ -26657,13 +26657,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVNB')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26695,26 +26695,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVTS')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VVTS
+-- AirlineRoute for Singapore Airlines on WSSS -> VVTS
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVTS'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVTS'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VVTS
+-- Aircraft A359 for Singapore Airlines on WSSS -> VVTS
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVTS'))),
@@ -26722,13 +26722,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VVTS')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26760,26 +26760,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VHHH')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VHHH
+-- AirlineRoute for Singapore Airlines on WSSS -> VHHH
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VHHH'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VHHH'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VHHH
+-- Aircraft A359 for Singapore Airlines on WSSS -> VHHH
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VHHH'))),
@@ -26787,13 +26787,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VHHH')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26825,26 +26825,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOHS')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VOHS
+-- AirlineRoute for Singapore Airlines on WSSS -> VOHS
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOHS'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOHS'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VOHS
+-- Aircraft A359 for Singapore Airlines on WSSS -> VOHS
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOHS'))),
@@ -26852,13 +26852,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VOHS')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26890,26 +26890,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LTFM')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> LTFM
+-- AirlineRoute for Singapore Airlines on WSSS -> LTFM
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LTFM'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LTFM'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> LTFM
+-- Aircraft A359 for Singapore Airlines on WSSS -> LTFM
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LTFM'))),
@@ -26917,13 +26917,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LTFM')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -26955,26 +26955,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WIII')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> WIII
+-- AirlineRoute for Singapore Airlines on WSSS -> WIII
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WIII'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WIII'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> WIII
+-- Aircraft A359 for Singapore Airlines on WSSS -> WIII
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WIII'))),
@@ -26982,13 +26982,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WIII')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27020,26 +27020,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'FAOR')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> FAOR
+-- AirlineRoute for Singapore Airlines on WSSS -> FAOR
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'FAOR'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'FAOR'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> FAOR
+-- Aircraft A359 for Singapore Airlines on WSSS -> FAOR
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'FAOR'))),
@@ -27047,13 +27047,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'FAOR')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27085,26 +27085,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VECC')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VECC
+-- AirlineRoute for Singapore Airlines on WSSS -> VECC
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VECC'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VECC'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VECC
+-- Aircraft A359 for Singapore Airlines on WSSS -> VECC
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VECC'))),
@@ -27112,13 +27112,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VECC')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27150,26 +27150,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WMKK')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> WMKK
+-- AirlineRoute for Singapore Airlines on WSSS -> WMKK
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WMKK'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WMKK'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> WMKK
+-- Aircraft A359 for Singapore Airlines on WSSS -> WMKK
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WMKK'))),
@@ -27177,13 +27177,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WMKK')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27215,26 +27215,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGKK')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EGKK
+-- AirlineRoute for Singapore Airlines on WSSS -> EGKK
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGKK'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGKK'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EGKK
+-- Aircraft A359 for Singapore Airlines on WSSS -> EGKK
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGKK'))),
@@ -27242,13 +27242,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGKK')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27280,26 +27280,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGLL')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EGLL
+-- AirlineRoute for Singapore Airlines on WSSS -> EGLL
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGLL'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGLL'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> EGLL
+-- Aircraft A388 for Singapore Airlines on WSSS -> EGLL
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGLL'))),
@@ -27307,13 +27307,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGLL')))
     AND aircraft_type = 'A388'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27345,26 +27345,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KLAX')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> KLAX
+-- AirlineRoute for Singapore Airlines on WSSS -> KLAX
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KLAX'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KLAX'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> KLAX
+-- Aircraft A359 for Singapore Airlines on WSSS -> KLAX
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KLAX'))),
@@ -27372,13 +27372,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KLAX')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27410,26 +27410,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VRMM')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VRMM
+-- AirlineRoute for Singapore Airlines on WSSS -> VRMM
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VRMM'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VRMM'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VRMM
+-- Aircraft A359 for Singapore Airlines on WSSS -> VRMM
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VRMM'))),
@@ -27437,13 +27437,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VRMM')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27475,26 +27475,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGCC')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EGCC
+-- AirlineRoute for Singapore Airlines on WSSS -> EGCC
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGCC'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGCC'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EGCC
+-- Aircraft A359 for Singapore Airlines on WSSS -> EGCC
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGCC'))),
@@ -27502,13 +27502,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EGCC')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27540,26 +27540,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RPLL')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> RPLL
+-- AirlineRoute for Singapore Airlines on WSSS -> RPLL
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RPLL'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RPLL'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> RPLL
+-- Aircraft A359 for Singapore Airlines on WSSS -> RPLL
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RPLL'))),
@@ -27567,13 +27567,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RPLL')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27605,26 +27605,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YMML')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> YMML
+-- AirlineRoute for Singapore Airlines on WSSS -> YMML
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YMML'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YMML'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> YMML
+-- Aircraft A359 for Singapore Airlines on WSSS -> YMML
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YMML'))),
@@ -27632,13 +27632,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YMML')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27670,26 +27670,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIMC')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> LIMC
+-- AirlineRoute for Singapore Airlines on WSSS -> LIMC
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIMC'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIMC'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> LIMC
+-- Aircraft A359 for Singapore Airlines on WSSS -> LIMC
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIMC'))),
@@ -27697,13 +27697,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIMC')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27735,26 +27735,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VABB')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VABB
+-- AirlineRoute for Singapore Airlines on WSSS -> VABB
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VABB'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VABB'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> VABB
+-- Aircraft A388 for Singapore Airlines on WSSS -> VABB
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VABB'))),
@@ -27762,13 +27762,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VABB')))
     AND aircraft_type = 'A388'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27800,26 +27800,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDM')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> EDDM
+-- AirlineRoute for Singapore Airlines on WSSS -> EDDM
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDM'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDM'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> EDDM
+-- Aircraft A359 for Singapore Airlines on WSSS -> EDDM
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDM'))),
@@ -27827,13 +27827,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'EDDM')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27865,26 +27865,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KEWR')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> KEWR
+-- AirlineRoute for Singapore Airlines on WSSS -> KEWR
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KEWR'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KEWR'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> KEWR
+-- Aircraft A359 for Singapore Airlines on WSSS -> KEWR
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KEWR'))),
@@ -27892,13 +27892,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KEWR')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27930,26 +27930,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KJFK')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> KJFK
+-- AirlineRoute for Singapore Airlines on WSSS -> KJFK
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KJFK'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KJFK'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> KJFK
+-- Aircraft A359 for Singapore Airlines on WSSS -> KJFK
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KJFK'))),
@@ -27957,13 +27957,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KJFK')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -27995,26 +27995,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LFPG')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> LFPG
+-- AirlineRoute for Singapore Airlines on WSSS -> LFPG
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LFPG'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LFPG'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> LFPG
+-- Aircraft A359 for Singapore Airlines on WSSS -> LFPG
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LFPG'))),
@@ -28022,13 +28022,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LFPG')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28060,26 +28060,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YPPH')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> YPPH
+-- AirlineRoute for Singapore Airlines on WSSS -> YPPH
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YPPH'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YPPH'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> YPPH
+-- Aircraft A359 for Singapore Airlines on WSSS -> YPPH
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YPPH'))),
@@ -28087,13 +28087,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YPPH')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28125,26 +28125,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VDPP')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> VDPP
+-- AirlineRoute for Singapore Airlines on WSSS -> VDPP
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VDPP'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VDPP'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> VDPP
+-- Aircraft A359 for Singapore Airlines on WSSS -> VDPP
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VDPP'))),
@@ -28152,13 +28152,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'VDPP')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28190,26 +28190,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIRF')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> LIRF
+-- AirlineRoute for Singapore Airlines on WSSS -> LIRF
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIRF'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIRF'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> LIRF
+-- Aircraft A359 for Singapore Airlines on WSSS -> LIRF
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIRF'))),
@@ -28217,13 +28217,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'LIRF')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28255,26 +28255,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSFO')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> KSFO
+-- AirlineRoute for Singapore Airlines on WSSS -> KSFO
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSFO'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSFO'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> KSFO
+-- Aircraft A359 for Singapore Airlines on WSSS -> KSFO
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSFO'))),
@@ -28282,13 +28282,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSFO')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28320,26 +28320,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSEA')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> KSEA
+-- AirlineRoute for Singapore Airlines on WSSS -> KSEA
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSEA'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSEA'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> KSEA
+-- Aircraft A359 for Singapore Airlines on WSSS -> KSEA
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSEA'))),
@@ -28347,13 +28347,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'KSEA')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28385,26 +28385,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RKSI')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> RKSI
+-- AirlineRoute for Singapore Airlines on WSSS -> RKSI
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RKSI'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RKSI'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> RKSI
+-- Aircraft A359 for Singapore Airlines on WSSS -> RKSI
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RKSI'))),
@@ -28412,13 +28412,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RKSI')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28450,26 +28450,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZSPD')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> ZSPD
+-- AirlineRoute for Singapore Airlines on WSSS -> ZSPD
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZSPD'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZSPD'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> ZSPD
+-- Aircraft A359 for Singapore Airlines on WSSS -> ZSPD
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZSPD'))),
@@ -28477,13 +28477,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'ZSPD')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28515,26 +28515,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WARR')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> WARR
+-- AirlineRoute for Singapore Airlines on WSSS -> WARR
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WARR'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WARR'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> WARR
+-- Aircraft A359 for Singapore Airlines on WSSS -> WARR
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WARR'))),
@@ -28542,13 +28542,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WARR')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28580,26 +28580,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YSSY')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> YSSY
+-- AirlineRoute for Singapore Airlines on WSSS -> YSSY
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YSSY'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YSSY'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> YSSY
+-- Aircraft A388 for Singapore Airlines on WSSS -> YSSY
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YSSY'))),
@@ -28607,13 +28607,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'YSSY')))
     AND aircraft_type = 'A388'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28645,26 +28645,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJTT')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> RJTT
+-- AirlineRoute for Singapore Airlines on WSSS -> RJTT
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJTT'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJTT'))
 );
 
--- Aircraft A359 for WSSS Airlines on WSSS -> RJTT
+-- Aircraft A359 for Singapore Airlines on WSSS -> RJTT
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJTT'))),
@@ -28672,13 +28672,13 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJTT')))
     AND aircraft_type = 'A359'
 );
-INSERT INTO Airlines (airline_name) VALUES ('WSSS Airlines') ON CONFLICT (airline_name) DO NOTHING;
+INSERT INTO Airlines (airline_name) VALUES ('Singapore Airlines') ON CONFLICT (airline_name) DO NOTHING;
 
 -- Airport: WSSS
 INSERT INTO Airports (icao_code, name, country, rwy_length) 
@@ -28710,26 +28710,26 @@ WHERE NOT EXISTS (
     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJAA')
 );
 
--- AirlineRoute for WSSS Airlines on WSSS -> RJAA
+-- AirlineRoute for Singapore Airlines on WSSS -> RJAA
 INSERT INTO AirlineRoutes (airline_id, route_id)
 SELECT
-    (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines'),
+    (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines'),
     (SELECT route_id FROM Routes 
      WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
      AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJAA'))
 WHERE NOT EXISTS (
     SELECT 1 FROM AirlineRoutes
-    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+    WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
     AND route_id = (SELECT route_id FROM Routes 
                    WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                    AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJAA'))
 );
 
--- Aircraft A388 for WSSS Airlines on WSSS -> RJAA
+-- Aircraft A388 for Singapore Airlines on WSSS -> RJAA
 INSERT INTO AircraftOnRoutes (airline_route_id, aircraft_type)
 SELECT
     (SELECT airline_route_id FROM AirlineRoutes
-     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+     WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
      AND route_id = (SELECT route_id FROM Routes 
                     WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                     AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJAA'))),
@@ -28737,7 +28737,7 @@ SELECT
 WHERE NOT EXISTS (
     SELECT 1 FROM AircraftOnRoutes
     WHERE airline_route_id = (SELECT airline_route_id FROM AirlineRoutes
-                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'WSSS Airlines')
+                             WHERE airline_id = (SELECT airline_id FROM Airlines WHERE airline_name = 'Singapore Airlines')
                              AND route_id = (SELECT route_id FROM Routes 
                                            WHERE origin_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'WSSS')
                                            AND destination_airport_id = (SELECT airport_id FROM Airports WHERE icao_code = 'RJAA')))
