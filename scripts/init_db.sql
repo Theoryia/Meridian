@@ -1,19 +1,17 @@
 -- Create Airlines table
 CREATE TABLE Airlines (
     airline_id SERIAL PRIMARY KEY,
-    airline_name VARCHAR(100) NOT NULL,
-    airline_base VARCHAR(100) NOT NULL,
+    airline_name VARCHAR(100) NOT NULL UNIQUE,
     airline_alliance VARCHAR(50)
 );
 
 -- Create Airports table
 CREATE TABLE Airports (
     airport_id SERIAL PRIMARY KEY,
-    icao CHAR(4) NOT NULL UNIQUE,
-    name VARCHAR(100) NOT NULL,
-    country VARCHAR(50) NOT NULL,
-    rwy_length INTEGER,
-    max_aircraft INTEGER
+    icao_code CHAR(4) NOT NULL UNIQUE,
+    name VARCHAR(150),
+    country VARCHAR(100),
+    rwy_length INTEGER
 );
 
 -- Create Routes table
@@ -37,7 +35,8 @@ CREATE TABLE AirlineRoutes (
 CREATE TABLE AircraftOnRoutes (
     aircraft_route_id SERIAL PRIMARY KEY,
     airline_route_id INTEGER NOT NULL REFERENCES AirlineRoutes(airline_route_id),
-    aircraft_type VARCHAR(50) NOT NULL
+    aircraft_type VARCHAR(50) NOT NULL,
+    CONSTRAINT unique_aircraft_route UNIQUE (airline_route_id, aircraft_type)
 );
 
 -- Add indexes for performance
