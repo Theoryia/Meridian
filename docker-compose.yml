@@ -32,6 +32,17 @@ services:
       - internal
     restart: unless-stopped
 
+  flighttime:
+    container_name: flighttime
+    build:
+      context: ./flightTime
+      dockerfile: dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - internal
+    restart: unless-stopped
+
 volumes:
   pgdata:
 

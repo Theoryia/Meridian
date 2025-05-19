@@ -1,0 +1,3 @@
+[submodule "flightTime"]
+	path = flightTime
+	url = https://github.com/Theoryia/flightTime
