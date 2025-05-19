@@ -1,6 +1,7 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  //import { onMount } from 'svelte';
   import { DateTime } from 'luxon';
+  
   
   // --- Types ---
   interface TimeDisplay {
@@ -17,6 +18,21 @@
     code?: string;
     region?: string;
     timezone?: string;
+    coordinates?: [number, number]; // Add coordinates
+    gmtOffset?: number; // Store GMT offset in minutes
+  }
+  
+  // Add this new interface for TimezoneDB API response
+  interface TimezoneResponse {
+    status: string;
+    message: string;
+    countryCode: string;
+    countryName: string;
+    regionName: string;
+    cityName: string;
+    zoneName: string;
+    abbreviation: string;
+    gmtOffset: number; // This is in seconds
   }
   
   // --- Form Inputs with Better Defaults ---
@@ -98,7 +114,7 @@
   
   // Fetch flight time from API
   async function fetchFlightTime(): Promise<void> {
-    if (!departureIcao || !arrivalIcao || !departureInfo?.isValid || !arrivalInfo?.isValid) {
+    if (!departureIcao || !arrivalIcao) {
       return;
     }
     
@@ -106,7 +122,7 @@
       isLoadingFlightTime = true;
       flightTimeError = '';
       
-      const response = await fetch(`http://127.0.0.1:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`);
+      const response = await fetch(`http://127.0.0.1:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`); 
       
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
@@ -121,7 +137,20 @@
       const [hours, minutes] = data.flight_time;
       flightLength = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
       
-      // Recalculate times with the new flight length
+      // Store coordinates in airport info
+      if (!departureInfo) departureInfo = processIcao(departureIcao);
+      if (!arrivalInfo) arrivalInfo = processIcao(arrivalIcao);
+      
+      if (departureInfo && arrivalInfo) {
+        // Update with coordinates
+        departureInfo.coordinates = data.departure_coords;
+        arrivalInfo.coordinates = data.arrival_coords;
+        
+        // Fetch timezone data for both airports
+        await updateTimezoneData();
+      }
+      
+      // Recalculate times with the new flight length and timezone data
       calculateTimes();
       
     } catch (error) {
@@ -129,6 +158,49 @@
       flightTimeError = "Couldn't fetch flight time";
     } finally {
       isLoadingFlightTime = false;
+    }
+  }
+  
+  // New function to get timezone info from coordinates
+  async function fetchTimezoneData(lat: number, lng: number): Promise<TimezoneResponse | null> {
+    try {
+      const response = await fetch(
+        `http://api.timezonedb.com/v2.1/get-time-zone?key=${}&format=json&by=position&lat=${lat}&lng=${lng}`
+      );
+      
+      if (!response.ok) {
+        throw new Error(`Timezone API error: ${response.status}`);
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error("Failed to fetch timezone data:", error);
+      return null;
+    }
+  }
+  
+  // New function to update timezone data for both airports
+  async function updateTimezoneData(): Promise<void> {
+    if (!departureInfo?.coordinates || !arrivalInfo?.coordinates) return;
+    
+    // Fetch departure timezone data
+    const [depLat, depLng] = departureInfo.coordinates;
+    const departureTimezone = await fetchTimezoneData(depLat, depLng);
+    
+    // Fetch arrival timezone data
+    const [arrLat, arrLng] = arrivalInfo.coordinates;
+    const arrivalTimezone = await fetchTimezoneData(arrLat, arrLng);
+    
+    if (departureTimezone && departureTimezone.status === "OK") {
+      departureInfo.timezone = departureTimezone.zoneName;
+      departureInfo.region = `${departureTimezone.countryName}, ${departureTimezone.regionName}`;
+      departureInfo.gmtOffset = departureTimezone.gmtOffset; // Store offset in seconds
+    }
+    
+    if (arrivalTimezone && arrivalTimezone.status === "OK") {
+      arrivalInfo.timezone = arrivalTimezone.zoneName;
+      arrivalInfo.region = `${arrivalTimezone.countryName}, ${arrivalTimezone.regionName}`;
+      arrivalInfo.gmtOffset = arrivalTimezone.gmtOffset; // Store offset in seconds
     }
   }
   
@@ -177,7 +249,7 @@
       
       const flightLengthMinutes = (hours * 60) + minutes;
       
-      // Calculate times with proper timezone handling
+      // Create DateTime objects with accurate timezone info
       const departureDateTime = DateTime.fromISO(`${departureDateStr}T${departureTimeStr}:00`, {
         zone: departureInfo.timezone || "UTC"
       });
@@ -189,14 +261,12 @@
       // Calculate user's local time at arrival
       const userLocalArrivalTime = arrivalDateTime.toLocal();
       
-      // Calculate user's local time at departure (different!)
+      // Calculate user's local time at departure
       const userLocalDepartureTime = departureDateTime.toLocal();
       
-      // Format displays
+      // Format displays with accurate timezone data
       departureTimeDisplay = formatTimeDisplay(departureDateTime);
       arrivalTimeDisplay = formatTimeDisplay(arrivalDateTime);
-      
-      // Store user's local time at arrival for the main display
       userLocalTimeDisplay = formatTimeDisplay(userLocalArrivalTime, true);
       
       // Set time-based styles
@@ -213,8 +283,37 @@
   
   // --- Helper Functions ---
   function formatTimeDisplay(dt: DateTime, isLocal = false): TimeDisplay {
+    // Calculate GMT offset (convert from seconds to hours)
+    let offsetHours = 0;
+    let offsetSign = '+';
+    
+    if (!isLocal) {
+      // If this is for an airport timezone and we have the gmtOffset from API
+      const airportInfo = dt.zoneName === departureInfo?.timezone 
+        ? departureInfo 
+        : (dt.zoneName === arrivalInfo?.timezone ? arrivalInfo : null);
+        
+      if (airportInfo?.gmtOffset !== undefined) {
+        // Convert seconds to hours
+        offsetHours = Math.abs(Math.round(airportInfo.gmtOffset / 3600));
+        offsetSign = airportInfo.gmtOffset >= 0 ? '+' : '-';
+      } else {
+        // Fall back to DateTime's calculation
+        const offsetMinutes = dt.offset;
+        offsetHours = Math.floor(Math.abs(offsetMinutes) / 60);
+        offsetSign = offsetMinutes >= 0 ? '+' : '-';
+      }
+    } else {
+      // For local time, use DateTime's built-in offset
+      const offsetMinutes = dt.offset;
+      offsetHours = Math.floor(Math.abs(offsetMinutes) / 60);
+      offsetSign = offsetMinutes >= 0 ? '+' : '-';
+    }
+    
+    const gmtDisplay = `(GMT${offsetSign}${offsetHours})`;
+    
     return {
-      time: dt.toFormat('EEE h:mm a'),
+      time: `${dt.toFormat('EEE h:mm a')} ${gmtDisplay}`,
       date: dt.toFormat('d LLL yyyy'),
       full: dt.toFormat('EEE h:mm a - d LLL yyyy'),
       timezone: isLocal ? (DateTime.local().zoneName || "Local") : (dt.zoneName || "UTC")
@@ -275,6 +374,7 @@
     "T": "America/Port_of_Spain", "U": "Europe/Moscow", "V": "Asia/Bangkok", 
     "W": "Asia/Jakarta", "Y": "Australia/Sydney", "Z": "Asia/Shanghai"
   };
+
 </script>
 
 <div class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
@@ -443,7 +543,14 @@
             
             <div class="flex items-end justify-between">
               <div>
-                <div class="text-3xl font-bold mb-1">{departureTimeDisplay.time}</div>
+                <!-- For departure time -->
+                <div class="text-3xl font-bold mb-1">
+                  {departureTimeDisplay.time.split(' (GMT')[0]}
+                  <span class="text-lg font-normal text-white/80 ml-1">
+                    {departureTimeDisplay.time.includes('(GMT') ? 
+                      '(GMT' + departureTimeDisplay.time.split('(GMT')[1] : ''}
+                  </span>
+                </div>
                 <div class="text-lg opacity-90 -mt-1">{departureTimeDisplay.date}</div>
               </div>
               <div class="text-right">
@@ -471,7 +578,14 @@
             
             <div class="flex items-end justify-between">
               <div>
-                <div class="text-3xl font-bold mb-1">{arrivalTimeDisplay.time}</div>
+                <!-- For arrival time -->
+                <div class="text-3xl font-bold mb-1">
+                  {arrivalTimeDisplay.time.split(' (GMT')[0]}
+                  <span class="text-lg font-normal text-white/80 ml-1">
+                    {arrivalTimeDisplay.time.includes('(GMT') ? 
+                      '(GMT' + arrivalTimeDisplay.time.split('(GMT')[1] : ''}
+                  </span>
+                </div>
                 <div class="text-lg opacity-90 -mt-1">{arrivalTimeDisplay.date}</div>
               </div>
               <div class="text-right">
