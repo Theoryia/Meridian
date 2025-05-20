@@ -2,7 +2,6 @@
   //import { onMount } from 'svelte';
   import { DateTime } from 'luxon';
   
-  
   // --- Types ---
   interface TimeDisplay {
     time: string;
@@ -122,6 +121,17 @@
       isLoadingFlightTime = true;
       flightTimeError = '';
       
+      // Initialize airport info objects if not already done
+      if (!departureInfo) departureInfo = processIcao(departureIcao);
+      if (!arrivalInfo) arrivalInfo = processIcao(arrivalIcao);
+      
+      // Only proceed if we have valid airports
+      if (!departureInfo?.isValid || !arrivalInfo?.isValid) {
+        flightTimeError = "Invalid airport codes";
+        return;
+      }
+      
+      console.log('Fetching flight time data from API...');
       const response = await fetch(`http://127.0.0.1:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`); 
       
       if (!response.ok) {
@@ -129,6 +139,7 @@
       }
       
       const data = await response.json();
+      console.log('Flight data received:', data); // Debug log
       
       // Store the distance from the API response
       distance_km = data.distance_km;
@@ -137,17 +148,26 @@
       const [hours, minutes] = data.flight_time;
       flightLength = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
       
-      // Store coordinates in airport info
-      if (!departureInfo) departureInfo = processIcao(departureIcao);
-      if (!arrivalInfo) arrivalInfo = processIcao(arrivalIcao);
-      
-      if (departureInfo && arrivalInfo) {
-        // Update with coordinates
+      // IMPORTANT: Update the coordinates in the airport info objects
+      if (data.departure_coords && data.departure_coords.length === 2) {
+        console.log('Setting departure coordinates:', data.departure_coords);
         departureInfo.coordinates = data.departure_coords;
+      } else {
+        console.warn('Invalid or missing departure coordinates in API response');
+      }
+      
+      if (data.arrival_coords && data.arrival_coords.length === 2) {
+        console.log('Setting arrival coordinates:', data.arrival_coords);
         arrivalInfo.coordinates = data.arrival_coords;
-        
-        // Fetch timezone data for both airports
+      } else {
+        console.warn('Invalid or missing arrival coordinates in API response');
+      }
+      
+      // Now fetch timezone data only if we have coordinates
+      if (departureInfo.coordinates && arrivalInfo.coordinates) {
         await updateTimezoneData();
+      } else {
+        console.warn('Cannot update timezone data: missing coordinates');
       }
       
       // Recalculate times with the new flight length and timezone data
@@ -155,17 +175,18 @@
       
     } catch (error) {
       console.error("Failed to fetch flight time:", error);
-      flightTimeError = "Couldn't fetch flight time";
+      flightTimeError = "Couldn't fetch flight time, check ICAO.";
     } finally {
       isLoadingFlightTime = false;
     }
   }
   
-  // New function to get timezone info from coordinates
+  // Update in your +page.svelte file
   async function fetchTimezoneData(lat: number, lng: number): Promise<TimezoneResponse | null> {
     try {
+      console.log("")
       const response = await fetch(
-        `http://api.timezonedb.com/v2.1/get-time-zone?key=${}&format=json&by=position&lat=${lat}&lng=${lng}`
+        `/api/timezone?lat=${lat}&lng=${lng}`
       );
       
       if (!response.ok) {
@@ -181,14 +202,28 @@
   
   // New function to update timezone data for both airports
   async function updateTimezoneData(): Promise<void> {
-    if (!departureInfo?.coordinates || !arrivalInfo?.coordinates) return;
+    console.log('🔍 updateTimezoneData called');
+    if (!departureInfo?.coordinates || !arrivalInfo?.coordinates) {
+      console.log('❌ Missing coordinates', {
+        departure: departureInfo?.coordinates,
+        arrival: arrivalInfo?.coordinates
+      });
+      return;
+    }
+    
+    console.log('📍 Calling API with coordinates', {
+      departure: departureInfo.coordinates,
+      arrival: arrivalInfo.coordinates
+    });
     
     // Fetch departure timezone data
     const [depLat, depLng] = departureInfo.coordinates;
+    console.log('Fetching timezone for departure:', depLat, depLng);
     const departureTimezone = await fetchTimezoneData(depLat, depLng);
     
     // Fetch arrival timezone data
     const [arrLat, arrLng] = arrivalInfo.coordinates;
+    console.log('Fetching timezone for arrival:', arrLat, arrLng);
     const arrivalTimezone = await fetchTimezoneData(arrLat, arrLng);
     
     if (departureTimezone && departureTimezone.status === "OK") {
