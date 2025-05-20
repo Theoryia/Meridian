@@ -18,7 +18,7 @@
     region?: string;
     timezone?: string;
     coordinates?: [number, number]; // Add coordinates
-    gmtOffset?: number; // Store GMT offset in minutes
+    gmtOffset?: number; // Store GMT offset in minutes (converted from seconds)
   }
   
   // Add this new interface for TimezoneDB API response
@@ -184,7 +184,6 @@
   // Update in your +page.svelte file
   async function fetchTimezoneData(lat: number, lng: number): Promise<TimezoneResponse | null> {
     try {
-      console.log("")
       const response = await fetch(
         `/api/timezone?lat=${lat}&lng=${lng}`
       );
@@ -580,10 +579,10 @@
               <div>
                 <!-- For departure time -->
                 <div class="text-3xl font-bold mb-1">
-                  {departureTimeDisplay.time.split(' (GMT')[0]}
-                  <span class="text-lg font-normal text-white/80 ml-1">
-                    {departureTimeDisplay.time.includes('(GMT') ? 
-                      '(GMT' + departureTimeDisplay.time.split('(GMT')[1] : ''}
+                  {departureTimeDisplay.time}  
+                  <span class="text-lg font-normal text-white/80 ml-1">  
+                    {departureInfo.gmtOffset !== undefined ? 
+                      `(GMT${(departureInfo.gmtOffset >= 0 ? '+' : '')}${Math.floor(departureInfo.gmtOffset / 60)}:${Math.abs(departureInfo.gmtOffset % 60).toString().padStart(2, '0')})` : ''}
                   </span>
                 </div>
                 <div class="text-lg opacity-90 -mt-1">{departureTimeDisplay.date}</div>
