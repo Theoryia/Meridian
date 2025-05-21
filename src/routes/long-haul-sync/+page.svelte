@@ -131,7 +131,6 @@
         return;
       }
       
-      console.log('Fetching flight time data from API...');
       const response = await fetch(`http://127.0.0.1:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`); 
       
       if (!response.ok) {
@@ -139,7 +138,6 @@
       }
       
       const data = await response.json();
-      console.log('Flight data received:', data); // Debug log
       
       // Store the distance from the API response
       distance_km = data.distance_km;
@@ -150,14 +148,12 @@
       
       // IMPORTANT: Update the coordinates in the airport info objects
       if (data.departure_coords && data.departure_coords.length === 2) {
-        console.log('Setting departure coordinates:', data.departure_coords);
         departureInfo.coordinates = data.departure_coords;
       } else {
         console.warn('Invalid or missing departure coordinates in API response');
       }
       
       if (data.arrival_coords && data.arrival_coords.length === 2) {
-        console.log('Setting arrival coordinates:', data.arrival_coords);
         arrivalInfo.coordinates = data.arrival_coords;
       } else {
         console.warn('Invalid or missing arrival coordinates in API response');
@@ -194,47 +190,34 @@
       
       return await response.json();
     } catch (error) {
-      console.error("Failed to fetch timezone data:", error);
       return null;
     }
   }
   
   // New function to update timezone data for both airports
   async function updateTimezoneData(): Promise<void> {
-    console.log('🔍 updateTimezoneData called');
     if (!departureInfo?.coordinates || !arrivalInfo?.coordinates) {
-      console.log('❌ Missing coordinates', {
-        departure: departureInfo?.coordinates,
-        arrival: arrivalInfo?.coordinates
-      });
       return;
     }
     
-    console.log('📍 Calling API with coordinates', {
-      departure: departureInfo.coordinates,
-      arrival: arrivalInfo.coordinates
-    });
-    
     // Fetch departure timezone data
     const [depLat, depLng] = departureInfo.coordinates;
-    console.log('Fetching timezone for departure:', depLat, depLng);
     const departureTimezone = await fetchTimezoneData(depLat, depLng);
     
     // Fetch arrival timezone data
     const [arrLat, arrLng] = arrivalInfo.coordinates;
-    console.log('Fetching timezone for arrival:', arrLat, arrLng);
     const arrivalTimezone = await fetchTimezoneData(arrLat, arrLng);
     
     if (departureTimezone && departureTimezone.status === "OK") {
       departureInfo.timezone = departureTimezone.zoneName;
       departureInfo.region = `${departureTimezone.countryName}, ${departureTimezone.regionName}`;
-      departureInfo.gmtOffset = departureTimezone.gmtOffset; // Store offset in seconds
+      departureInfo.gmtOffset = departureTimezone.gmtOffset;
     }
     
     if (arrivalTimezone && arrivalTimezone.status === "OK") {
       arrivalInfo.timezone = arrivalTimezone.zoneName;
       arrivalInfo.region = `${arrivalTimezone.countryName}, ${arrivalTimezone.regionName}`;
-      arrivalInfo.gmtOffset = arrivalTimezone.gmtOffset; // Store offset in seconds
+      arrivalInfo.gmtOffset = arrivalTimezone.gmtOffset;
     }
   }
   
@@ -563,8 +546,8 @@
       <!-- Results Display -->
       {#if departureTimeDisplay && arrivalTimeDisplay && userLocalTimeDisplay && departureInfo && arrivalInfo}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          <!-- Departure Time Box - More compact -->
-          <div style={departureCardStyle} class="p-5 rounded-xl border-2 shadow-lg text-white">
+          <!-- Departure Time Box - With fixed alignment -->
+          <div style={departureCardStyle} class="p-5 rounded-xl border-2 shadow-lg text-white flex flex-col h-full">
             <div class="flex items-center justify-between mb-2">
               <h3 class="text-lg font-semibold">Departure</h3>
               <div class="flex items-center space-x-3">
@@ -575,14 +558,13 @@
               </div>
             </div>
             
-            <div class="flex items-end justify-between">
+            <div class="flex items-end justify-between flex-grow">
               <div>
-                <!-- For departure time -->
                 <div class="text-3xl font-bold mb-1">
-                  {departureTimeDisplay.time}  
-                  <span class="text-lg font-normal text-white/80 ml-1">  
-                    {departureInfo.gmtOffset !== undefined ? 
-                      `(GMT${(departureInfo.gmtOffset >= 0 ? '+' : '')}${Math.floor(departureInfo.gmtOffset / 60)}:${Math.abs(departureInfo.gmtOffset % 60).toString().padStart(2, '0')})` : ''}
+                  {departureTimeDisplay.time.split(' (GMT')[0]}
+                  <span class="text-lg font-normal text-white/80 ml-1">
+                    {departureTimeDisplay.time.includes('(GMT') ? 
+                      '(GMT' + departureTimeDisplay.time.split('(GMT')[1] : ''}
                   </span>
                 </div>
                 <div class="text-lg opacity-90 -mt-1">{departureTimeDisplay.date}</div>
@@ -593,7 +575,7 @@
               </div>
             </div>
             
-            <div class="mt-2 pt-2 border-t border-white/20">
+            <div class="mt-auto pt-2 border-t border-white/20">
               <div class="flex items-center justify-between">
                 <div class="text-white/70 text-xs">Your local time:</div>
                 <div class="text-white/90 text-sm">{departureTimeDisplay.userLocalTime?.time}</div>
@@ -601,8 +583,8 @@
             </div>
           </div>
           
-          <!-- Arrival Time Box - More compact -->
-          <div style={arrivalCardStyle} class="p-5 rounded-xl border-2 shadow-lg text-white">
+          <!-- Arrival Time Box - With fixed alignment -->
+          <div style={arrivalCardStyle} class="p-5 rounded-xl border-2 shadow-lg text-white flex flex-col h-full">
             <div class="flex items-center justify-between mb-2">
               <h3 class="text-lg font-semibold">Arrival</h3>
               <div class="bg-black/30 backdrop-blur-sm px-2 py-1 rounded-full text-white text-xs font-bold">
@@ -610,9 +592,8 @@
               </div>
             </div>
             
-            <div class="flex items-end justify-between">
+            <div class="flex items-end justify-between flex-grow">
               <div>
-                <!-- For arrival time -->
                 <div class="text-3xl font-bold mb-1">
                   {arrivalTimeDisplay.time.split(' (GMT')[0]}
                   <span class="text-lg font-normal text-white/80 ml-1">
@@ -628,7 +609,7 @@
               </div>
             </div>
             
-            <div class="mt-2 pt-2 border-t border-white/20">
+            <div class="mt-auto pt-2 border-t border-white/20">
               <div class="flex items-center justify-between">
                 <div class="text-white/70 text-xs">Your local time:</div>
                 <div class="text-white/90 text-sm flex items-center">
