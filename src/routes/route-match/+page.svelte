@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { PageData } from './$types';
+  import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
-  let { data }: { data: PageData } = $props();
+  const { data }: { data: PageData } = $props();
   
   // Filter state - using $state() for reactivity
   let airlineFilter = $state('');
@@ -33,6 +33,20 @@
     minDistance = 0;
     maxDistance = 10000;
     includeCodeshares = true;
+  }
+
+  async function applyFilters() {
+    const params = new URLSearchParams();
+    if (airlineFilter) params.set('airline', airlineFilter);
+    if (departureFilter) params.set('departure', departureFilter);
+    if (arrivalFilter) params.set('arrival', arrivalFilter);
+    if (aircraftTypeFilter) params.set('aircraft', aircraftTypeFilter);
+    if (minDistance > 0) params.set('minDist', minDistance.toString());
+    if (maxDistance < 15000) params.set('maxDist', maxDistance.toString());
+    params.set('codeshares', includeCodeshares.toString());
+
+    // This will trigger a navigation and reload the page data from the server
+    await goto(`?${params.toString()}`, { keepFocus: true, replaceState: false, noScroll: true });
   }
   
   // Share current filters
@@ -223,6 +237,7 @@
               Reset Filters
             </button>
             <button 
+              onclick="{applyFilters}"
               class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-500 text-white rounded transition-colors"
             >
               Apply Filters
@@ -251,10 +266,21 @@
                     <div class="inline-block w-8 h-8 border-2 border-slate-500 border-t-blue-500 rounded-full animate-spin"></div>
                   </td>
                 </tr>
+              {:else if data.routes.length}
+                {#each data.routes as route}
+                  <tr class="text-slate-300 hover:bg-slate-700/40 transition-colors">
+                    <td class="px-4 py-3 text-sm">{route.airline_name}</td>
+                    <td class="px-4 py-3 text-sm">{route.departure}</td>
+                    <td class="px-4 py-3 text-sm">{route.arrival}</td>
+                    <td class="px-4 py-3 text-sm">{route.distance}</td>
+                    <td class="px-4 py-3 text-sm">{route.aircraft_type}</td>
+                  </tr>
+                {/each}
               {:else}
-                <!-- Placeholder rows - will be replaced with actual data -->
-                <tr class="text-slate-300 hover:bg-slate-700/40 transition-colors">
-                  <td class="px-4 py-3 text-sm" colspan="5">No routes matching your criteria. Adjust filters or add routes.</td>
+                <tr>
+                  <td colspan="5" class="px-4 py-12 text-center">
+                    No routes matching your criteria. Adjust filters or add routes.
+                  </td>
                 </tr>
               {/if}
             </tbody>
