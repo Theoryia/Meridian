@@ -23,7 +23,7 @@ export const load: PageServerLoad = async ({ url }) => {
 
   // Build SQL query (template, adjust as needed)
   let query = `
-    SELECT a.airline_name, ap1.icao_code AS departure, ap2.icao_code AS arrival, r.distance, ar.aircraft_type
+    SELECT r.route_id, a.airline_id, a.airline_name, a.airline_alliance, ap1.icao_code AS departure, ap2.icao_code AS arrival, r.distance, ar.aircraft_type
     FROM Airlines a
     JOIN AirlineRoutes alr ON a.airline_id = alr.airline_id
     JOIN Routes r ON alr.route_id = r.route_id
@@ -39,24 +39,43 @@ export const load: PageServerLoad = async ({ url }) => {
     params.push(`%${airline}%`);
   }
   if (departure) {
-    query += ' AND ap1.icao_code = $' + (params.length + 1);
-    params.push(departure);
+    query += ' AND ap1.icao_code LIKE $' + (params.length + 1);
+    params.push(`%${departure}%`);
   }
   if (arrival) {
-    query += ' AND ap2.icao_code = $' + (params.length + 1);
-    params.push(arrival);
+    query += ' AND ap2.icao_code LIKE $' + (params.length + 1);
+    params.push(`%${arrival}%`);
   }
   if (aircraft) {
     query += ' AND ar.aircraft_type = $' + (params.length + 1);
     params.push(aircraft);
   }
-  // Add codeshare logic if you have a column for it
 
   const { rows } = await pool.query(query, params);
 
-  console.log('Query executed:', rows);
+  // For each route, if codeshares is enabled and the airline has an alliance, fetch other airlines in the same alliance
+  let routes = [];
+  if (codeshares) {
+    for (const row of rows) {
+      let codeshareAirlines: string[] = [];
+      if (row.airline_alliance) {
+        const csQuery = `
+          SELECT airline_name FROM Airlines
+          WHERE airline_alliance = $1 AND airline_id != $2
+        `;
+        const { rows: csRows } = await pool.query(csQuery, [row.airline_alliance, row.airline_id]);
+        codeshareAirlines = csRows.map(cs => cs.airline_name);
+      }
+      routes.push({
+        ...row,
+        codeshares: codeshareAirlines
+      });
+    }
+  } else {
+    routes = rows.map(row => ({ ...row, codeshares: [] }));
+  }
 
   return {
-    routes: rows
+    routes
   };
 };
