@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
 
-  const { data } = $props();
+  const { data }: { data: PageData } = $props();
   
   // Filter state - using $state() for reactivity
   let airlineFilter = $state('');
