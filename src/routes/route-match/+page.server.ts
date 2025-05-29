@@ -1,14 +1,13 @@
-import process from 'process';
 import type { PageServerLoad } from './$types';
 import { Pool } from 'pg';
-import 'dotenv/config';
+import { env } from '$env/dynamic/private';
 
 const pool = new Pool({
-  host: process.env.POSTGRES_HOST,
+  host: env.POSTGRES_HOST,
   port: 5432,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASS,
-  database: process.env.POSTGRES_DB
+  user: env.POSTGRES_USER,
+  password: env.POSTGRES_PASS,
+  database: env.POSTGRES_DB
 });
 
 export const load: PageServerLoad = async ({ url }) => {
