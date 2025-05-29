@@ -14,5 +14,8 @@ COPY --from=build /app/package*.json ./
 COPY --from=build /app/build ./build
 RUN npm install --omit=dev
 
+ARG TIMEZONE_API_KEY
+ENV TIMEZONE_API_KEY=${TIMEZONE_API_KEY}
+
 EXPOSE 3000
 CMD ["npm", "run", "start"]
