@@ -1,5 +1,6 @@
 import { json } from '@sveltejs/kit';
-import { TIMEZONE_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+const TIMEZONE_API_KEY = env.TIMEZONE_API_KEY;
 
 export async function GET({ url }) {
   const lat = url.searchParams.get('lat');
