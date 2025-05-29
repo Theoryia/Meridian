@@ -2,6 +2,7 @@
     import { goto } from '$app/navigation';
     import { onMount } from 'svelte';
     import type { RoutesData } from '$lib/types';
+    import Navigation from '$lib/components/Navigation.svelte';
 
     const { data }: { data: RoutesData } = $props();
 
@@ -21,7 +22,7 @@
         { id: '', name: 'All Aircraft Types' },
         { id: 'B738', name: 'Boeing 737-800' },
         { id: 'A320', name: 'Airbus A320' },
-        { id: 'B77W', name: 'Boeing 777-300ER' },
+        { id: 'A388', name: 'Airbus A380-800' },
         { id: 'A359', name: 'Airbus A350-900' }
     ];
 
@@ -142,22 +143,7 @@
 </script>
 
 <div class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-white">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-900/80 backdrop-blur-sm">
-        <div class="container mx-auto px-4">
-            <div class="flex h-16 items-center justify-between">
-                <a
-                    href="/"
-                    class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-xl font-bold text-transparent"
-                >
-                    Meridian
-                </a>
-                <div class="flex items-center space-x-8">
-                    <a href="/" class="text-slate-300 transition-colors hover:text-white">Home</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <Navigation currentPage="route-match" />
 
     <div class="container mx-auto px-4 py-8">
         <h1 class="mb-4 text-center text-3xl font-bold">Route Match</h1>
