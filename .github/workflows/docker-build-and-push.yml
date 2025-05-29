@@ -34,3 +34,5 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/meridian:latest
+          build-args: |
+            TIMEZONE_API_KEY=${{ secrets.TIMEZONE_API_KEY }}
