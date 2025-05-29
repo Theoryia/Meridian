@@ -3,9 +3,7 @@ version: '3.8'
 services:
   meridian:
     container_name: meridian
-    build:
-      context: .
-      dockerfile: dockerfile
+    image: aboveu/meridian:latest
     env_file:
       - .env
     ports:
