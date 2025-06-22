@@ -132,7 +132,7 @@
         return;
       }
       
-      const response = await fetch(`http://127.0.0.1:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`); 
+      const response = await fetch(`http://flighttime:5000/flight-time?departure=${departureIcao}&arrival=${arrivalIcao}`); 
       
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
