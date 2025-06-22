@@ -35,11 +35,7 @@ services:
 
   flighttime:
     container_name: flighttime
-    build:
-      context: ./flightTime
-      dockerfile: dockerfile
-    ports:
-      - "5000:5000"
+    image: aboveu/flighttime:latest
     networks:
       - internal
     restart: unless-stopped
